@@ -21,12 +21,19 @@ async def create_payment(request: Request):
     order_id = str(uuid4())
     payment_url = f"https://zaglushkaoplaty.onrender.com/payment/{order_id}"
     mock_orders[order_id] = {
-        "product_name": data.get("product_name"),
-        "amount": data.get("amount"),
-        "user_id": data.get("user_id"),
-        "status": "pending",
-        "created_at": datetime.utcnow().isoformat()
-    }
+    "product_name": data.get("product_name"),
+    "amount": data.get("amount"),
+    "user_id": data.get("user_id"),
+    "company_name": data.get("company_name"),
+    "bin": data.get("bin"),
+    "contact_person": data.get("contact_person"),
+    "email": data.get("email"),
+    "phone": data.get("phone"),
+    "website": data.get("website"),
+    "comment": data.get("comment"),
+    "status": "pending",
+    "created_at": datetime.utcnow().isoformat()
+}
     return {"order_id": order_id, "payment_url": payment_url}
 
 @app.get("/payment/{order_id}", response_class=HTMLResponse)
