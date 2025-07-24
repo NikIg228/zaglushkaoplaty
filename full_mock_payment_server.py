@@ -19,7 +19,7 @@ mock_orders = {}
 async def create_payment(request: Request):
     data = await request.json()
     order_id = str(uuid4())
-    payment_url = f"https://your-domain.com/payment/{order_id}"
+    payment_url = f"https://zaglushkaoplaty.onrender.com/payment/{order_id}"
     mock_orders[order_id] = {
         "product_name": data.get("product_name"),
         "amount": data.get("amount"),
